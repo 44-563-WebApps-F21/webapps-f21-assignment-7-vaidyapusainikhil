@@ -3,6 +3,29 @@
 
 <head>
     <title>Stack It</title>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            background-color: red;
+        }
+
+        .flex-container>div {
+            /*div children of the flex container*/
+            background-color: #f1f1f1;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 600px) {
+            .flex-container {
+                flex-direction: column;
+                background-color: green;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -36,7 +59,6 @@
             stackItems = document.getElementsByClassName("stack")
             value = document.getElementById("form_input").value
             length = stackItems.length
-            alert(length);
             if (length > 0) {
                 stackItems[length - 1].remove();
             }
