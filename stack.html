@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Stack It</title>
+</head>
+
+<body>
+    <header>Sai Nikhil Vaidyapu builds a stack</header>
+    <br>
+    <input type="text" class="form-control" id="form_input" name="inputElement">
+    <br>
+    <p> Press the button to create an new element of type div and then add it to the container.</p>
+    <button onclick="makeNewDiv()">Push value</button>
+    <button onclick="popItem()">Pop</button>
+    <button onclick="zap()">Zap value</button>
+    <br>
+    <br>
+    <div class="flex-container" id="target">
+        <div class="stack">row item 1</div>
+        <div class="stack">row item 2</div>
+        <div class="stack">row item 3</div>
+    </div>
+
+    <script>
+        function makeNewDiv() {
+            /* make the div and its text */
+            let element = document.createElement("div")
+            value = document.getElementById("form_input").value
+            element.innerHTML = value
+            element.className = "stack"
+            /* add it to the container */
+            document.getElementById('target').appendChild(element)
+        }
+        function popItem() {
+            stackItems = document.getElementsByClassName("stack")
+            value = document.getElementById("form_input").value
+            length = stackItems.length
+            alert(length);
+            if (length > 0) {
+                stackItems[length - 1].remove();
+            }
+        }
+        function zap() {
+            count = 0
+            stackItems = document.getElementsByClassName("stack")
+            value = document.getElementById("form_input").value
+            for (item of stackItems) {
+                if (item.innerHTML == value) {
+                    stackItems[count].remove();
+                }
+                count += 1
+            }
+            console.log("We are getting rid of allelements with '" + value + "'")
+        }
+    </script>
+</body>
+
+</html>
