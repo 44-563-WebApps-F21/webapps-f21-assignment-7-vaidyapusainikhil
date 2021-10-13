@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Reaction Time</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        header {
+            color: red;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: xx-large;
+            text-shadow: 2px 2px 4px #000000;
+            filter: blur(0.1px);
+        }
+
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: medium;
+        }
+        #target{
+            color:blue;
+        }
+        #countdown{
+            color:orange;
+        }
+    </style>
+</head>
+
+<body>
+    <header>Sai Nikhil Vaidyapu reaction timer</header>
+    <br>
+    <p id="target">Your time</p>
+    <p id="countdown">Count</p>
+
+    <button type="button" class="btn btn-primary" onclick="startTime()">Start Timer</button>
+    <button type="button" class="btn btn-primary" onclick="recordReact()">React Now</button>
+    <script>
+        myTime = undefined
+        function startTime() {
+            for (i = 0; i < 4; i++) {
+                setTimeout(function () {
+                    out = document.getElementById('countdown')
+                    out.innerHTML = "Count " + i
+                }, (3 - i) * 1000)
+            }
+            setTimeout(function () {
+                if (myTime == undefined) {
+                    check = document.getElementById('target')
+                    check.innerHTML = "Too Slow"
+                } else {
+                    buttonTime = Date.now()
+                    diffTime = buttonTime - myTime
+                    diffTime = diffTime / 1000
+                    seconds = Math.floor(diffTime % 60)
+                    diffTime = Math.floor(diffTime / 60)
+                    minutes = diffTime % 60
+                    diffTime = Math.floor(diffTime / 60)
+                    hours = diffTime % 24
+                    diffDays = Math.floor(diffTime / 24)
+                    days = diffDays
+                    totalHours = hours + (days * 24)
+                    secondsAsString = seconds < 10 ? "0" + seconds : seconds
+                    minutesAsString = minutes < 10 ? "0" + minutes : minutes
+                    totalHoursAsString = totalHours < 10 ? "0" + totalHours : totalHours
+                    if (totalHoursAsString === "00") {
+                        string = minutesAsString + ":" + secondsAsString;
+                    } else {
+                        string = totalHoursAsString + ":" + minutesAsString + ":" + secondsAsString;
+                    }
+                    out = document.getElementById('target')
+                    out.innerHTML = "Time was " + string
+                }
+            }, 3000)
+        }
+        function recordReact() {
+            myTime = Date.now()
+            console.log("React Time " + myTime)
+        }
+    </script>
+
+</body>
+
+</html>
