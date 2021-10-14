@@ -37,6 +37,7 @@
     <button onclick="makeNewDiv()">Push value</button>
     <button onclick="popItem()">Pop</button>
     <button onclick="zap()">Zap value</button>
+    <button onclick="stackUnique()">Unique</button>
     <br>
     <br>
     <div class="flex-container" id="target">
@@ -74,6 +75,21 @@
                 count += 1
             }
             console.log("We are getting rid of allelements with '" + value + "'")
+        }
+        function stackUnique(){
+            stackItems = document.getElementsByClassName("stack")
+            for(i=0; i<stackItems.length;i++){
+                for(j=0;j<stackItems.length;j++){
+                    if(stackItems[i].innerHTML==stackItems[j].innerHTML){
+                        if(i>j){
+                            stackItems[j].remove
+                        }
+                        if(i<j){
+                            stackItems[i].remove
+                        }
+                    }
+                }
+            }
         }
     </script>
 </body>

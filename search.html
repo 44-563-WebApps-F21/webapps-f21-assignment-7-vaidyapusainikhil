@@ -118,9 +118,10 @@
        <script>
         let ids = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10", "p11", "p12", "p13", "p14", "p15", "p16", "p17", "p18", "p19", "p20", "p21", "p22", "p23", "p24"]
         tirecount = 0
-        animalLocation = 13
+        animalLocation = Math.floor(Math.random() * (max - min + 1) + min)
+        max = 23
+        min = 0
         clicks = 1
-
         function check(position) {
             id = ids[position]
             if (position == animalLocation) {
@@ -130,8 +131,14 @@
             out.innerHTML = "Number of tries is " + clicks
             clicks += 1
            distance(position, animalLocation)
+           reset()
         }
-
+        function reset(){
+            clicks = 0
+            out = document.getElementById("tries")
+            out.innerHTML = "Number of tries is " + clicks
+            animalLocation = Math.floor(Math.random() * (max - min + 1) + min)
+        }
         function distance(position, animalLocation) {
             row = 0
             column = 0

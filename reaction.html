@@ -22,7 +22,8 @@
     <script>
         myTime = undefined
         function startTime() {
-            for (i = 0; i < 4; i++) {
+            i = Math.floor(Math.random() * (max- min + 1) + min)
+            for (i ; i < 4; i++) {
                 setTimeout(function () {
                     out = document.getElementById('countdown')
                     out.innerHTML = "Count " + i
